@@ -1,34 +1,36 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule, provideClientHydration, withEventReplay } from '@angular/platform-browser';
-
-import { AppRoutingModule } from './app-routing.module';
+import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
-import { UsuariosComponent } from './usuarios/usuarios.component';
-import { RolesComponent } from './roles/roles.component';
-import { AlumnosComponent } from './alumnos/alumnos.component';
-import { ModulosComponent } from './modulos/modulos.component';
-import { NotasComponent } from './notas/notas.component';
-import { LoginComponent } from './login/login.component';
-import { AdminComponent } from './admin/admin.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DataTablesModule } from 'angular-datatables';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    UsuariosComponent,
-    RolesComponent,
-    AlumnosComponent,
-    ModulosComponent,
-    NotasComponent,
-    LoginComponent,
-    AdminComponent
+    // other components
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    FontAwesomeModule, // Import FontAwesomeModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    DataTablesModule,
+    NgbModule,
+    SweetAlert2Module.forRoot(), // Import SweetAlert2Module
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule
   ],
-  providers: [
-    provideClientHydration(withEventReplay())
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

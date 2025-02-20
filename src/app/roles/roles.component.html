@@ -1,1 +1,11 @@
-<p>roles works!</p>
+<h2>Roles</h2>
+<a class="btn btn-primary" routerLink="new"><fa-icon [icon]="faCirclePlus"></fa-icon>&nbsp;Añadir</a>
+
+<ul class="roles">
+    <li *ngFor="let role of roles">
+      <a routerLink="/detail/{{role.id}}">
+        <span class="">{{role.role}}</span>
+      </a>
+     
+    </li>
+</ul>

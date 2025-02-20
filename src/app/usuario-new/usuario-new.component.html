@@ -1,0 +1,46 @@
+<form  id="usuarioForm" (ngSubmit)="submit()"  [formGroup]="form">
+<mat-form-field>
+    <mat-label>E-mail</mat-label>
+<input matInput name = "email" placeholder="email"  class="form-control" formControlName="email">
+<!-- Mensajes de error -->
+<mat-error *ngIf="email && email?.hasError('required')">El correo es obligatorio</mat-error>
+<mat-error *ngIf="email && email?.hasError('email')">Formato de correo inválido</mat-error>
+</mat-form-field>
+ 
+<br>
+<mat-form-field>
+<input matInput name = "password" placeholder="password"  class="form-control" formControlName="password">
+<!-- Mensajes de error -->
+<mat-error *ngIf="password && password?.hasError('required')">El password es obligatorio</mat-error>
+</mat-form-field>
+ 
+<br>
+<mat-form-field>
+<input matInput name = "nombre" placeholder="nombre"  class="form-control" formControlName="nombre">
+<!-- Mensajes de error -->
+<mat-error *ngIf="nombre && nombre?.hasError('required')">El nombre es obligatorio</mat-error>
+</mat-form-field>
+
+<br>
+<mat-form-field>
+<input matInput name = "apellido" placeholder="apellido"  class="form-control" formControlName="apellido">
+</mat-form-field>
+<br>
+<mat-form-field>
+<input matInput name = "id_roles" placeholder="id_roles"  class="form-control" formControlName="id_roles">
+<!-- Mensajes de error -->
+<mat-error *ngIf="id_roles && id_roles?.hasError('required')">El id_roles es obligatorio</mat-error>
+</mat-form-field>
+
+<br>
+<mat-form-field>
+<input matInput  placeholder="id_comercios"  class="form-control" formControlName="id_comercios">
+<!-- Mensajes de error -->
+<mat-error *ngIf="id_comercios && id_comercios?.hasError('required')">El id_comercios es obligatorio</mat-error>
+</mat-form-field>
+
+<br>
+        <input type="submit" value="Submit" ><!--[disabled]="form.invalid"--->
+     </form>
+
+    <button type="button" (click)="goBack()">go back</button>

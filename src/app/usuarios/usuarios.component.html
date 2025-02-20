@@ -1,1 +1,75 @@
-<p>usuarios works!</p>
+
+
+
+  <h2>Usuarios</h2>
+  <!-- <a class="btn btn-primary" routerLink="new"><fa-icon [icon]="faCirclePlus"></fa-icon>&nbsp;Añadir</a> -->
+
+<!--<ul class="usuarios">
+  <li *ngFor="let user of usuarios">
+    
+    <a routerLink="/usuarios/detail/{{user.id}}">
+        <span class="badge">{{user.id}}</span> {{user.nombre}}
+      </a>
+
+    
+  </li>
+</ul>
+
+<p>{{message}}</p>-->
+
+<div class="row">
+<div class="col-2">
+  
+  <!-- icono:<fa-icon [icon]="faCoffee"></fa-icon> -->
+  <form>
+    <input type="text" name="email" placeholder="email" ngModel/>
+    <br>
+    <input type="text" name="password" placeholder="password" ngModel/>
+    <br>
+    <input type="text" name="nombre" placeholder="nombre" ngModel/>
+    <br>
+    <input type="text" name="apellido" placeholder="apellido" ngModel/>
+    <br>
+    <input type="text" name="id_roles" placeholder="id_roles" ngModel/>
+    <br>
+    <input type="text" name="id_comercios" placeholder="id_comercios" ngModel/>
+    <input type="submit" value="submit">
+    </form>
+
+</div>
+<div class="col-8">
+
+
+<!-- using-ng-template-ref.component.html  [dtTrigger]="dtTrigger" -->
+<!-- <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover" #myTable></table> -->
+
+<!--<ng-template #preview>
+  <blockquote>Please click on Action button</blockquote>
+  <p class="text-danger">You clicked on: <strong>{{ message }}</strong></p>
+  <br />
+  <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover"></table>
+</ng-template>-->
+
+<!--<app-base-demo [pageTitle]="pageTitle" [mdIntro]="mdIntro" [mdHTML]="mdHTML" [mdTSV1]="mdTS" [template]="preview">
+</app-base-demo>-->
+
+<ng-template #demoNg let-data="adtData" let-emitter="captureEvents">
+</ng-template>
+
+<!-- <swal
+  #confirmDialog
+  title="Are you sure?"
+  text="This cannot be undone"
+  icon="question"
+  [showDenyButton]="true"
+  [focusCancel]="true"
+></swal>
+<swal #swal1 title="Eliminado correctamente" text="Eliminado de la base de datos" icon="success"></swal> -->
+
+</div>
+</div>
+
+
+  
+    
+    
