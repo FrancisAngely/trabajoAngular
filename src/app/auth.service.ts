@@ -4,7 +4,7 @@ import { Observable, BehaviorSubject } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
   private apiUrl = 'http://localhost:8080/usuarios'; // Replace with your API URL
@@ -14,11 +14,13 @@ export class AuthService {
 
   // Login function
   login(email: string, password: string): Observable<any> {
-    return this.http.post<{ token: string }>(`${this.apiUrl}/login`, { email, password }).pipe(
-      tap(response => {
-        this.setToken(response.token);
-      })
-    );
+    return this.http
+      .post<{ token: string }>(`${this.apiUrl}/login`, { email, password })
+      .pipe(
+        tap((response) => {
+          this.setToken(response.token);
+        })
+      );
   }
 
   // Logout function

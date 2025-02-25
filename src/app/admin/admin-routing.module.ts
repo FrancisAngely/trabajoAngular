@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-
 import { HeroesComponent } from '../heroes/heroes.component';
 import { DashboardComponent } from '../dashboard/dashboard.component';
 import { HeroDetailComponent } from '../hero-detail/hero-detail.component';
@@ -22,30 +21,114 @@ import { HeroNewComponent } from '../hero-new/hero-new.component';
 import { RoleNewComponent } from '../role-new/role-new.component';
 const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
-  { path: 'dashboard', component: DashboardComponent, pathMatch: 'full' , canActivate: [AuthGuard],canMatch: [AuthGuard]},
+  {
+    path: 'dashboard',
+    component: DashboardComponent,
+    pathMatch: 'full',
+    canActivate: [AuthGuard],
+    canMatch: [AuthGuard],
+  },
   { path: 'sigin', redirectTo: '/login', pathMatch: 'full' },
   { path: 'detail/:id', component: HeroDetailComponent },
-  { path: 'heroes', component: HeroesComponent , canActivate: [AuthGuard],canMatch: [AuthGuard]},
-  { path: 'heroes/new', component: HeroNewComponent, canActivate: [AuthGuard],canMatch: [AuthGuard] },
-  { path: 'usuarios', component: UsuariosComponent, canActivate: [AuthGuard],canMatch: [AuthGuard] },
-  { path: 'usuarios/detail/:id', component: UsuarioDetailComponent, canActivate: [AuthGuard],canMatch: [AuthGuard] },
-  { path: 'usuarios/new', component: UsuarioNewComponent, canActivate: [AuthGuard],canMatch: [AuthGuard] },
-  { path: 'roles', component: RolesComponent, canActivate: [AuthGuard],canMatch: [AuthGuard] },
-  { path: 'roles/new', component: RoleNewComponent, canActivate: [AuthGuard],canMatch: [AuthGuard] },
-  { path: 'localidades', component: LocalidadesComponent, canActivate: [AuthGuard],canMatch: [AuthGuard] },
-  { path: 'localidades/detail/:id', component: LocalidadDetailComponent, canActivate: [AuthGuard],canMatch: [AuthGuard] },
-  { path: 'clientes', component: ClientesComponent , canActivate: [AuthGuard],canMatch: [AuthGuard]},
-  { path: 'clientes/detail/:id', component: ClienteDetailComponent , canActivate: [AuthGuard],canMatch: [AuthGuard]},
-  { path: 'contactos', component: ContactosComponent , canActivate: [AuthGuard],canMatch: [AuthGuard]},
-  { path: 'contactos/detail/:id', component: ContactoDetailComponent, canActivate: [AuthGuard],canMatch: [AuthGuard] },
-  { path: 'comercios', component: ComerciosComponent , canActivate: [AuthGuard],canMatch: [AuthGuard]},
-  { path: 'comercios/detail/:id', component: ComercioDetailComponent, canActivate: [AuthGuard],canMatch: [AuthGuard] },
-  { path: 'comercios/new', component: ComercioNewComponent, canActivate: [AuthGuard],canMatch: [AuthGuard] },
-]
-;
-
+  {
+    path: 'heroes',
+    component: HeroesComponent,
+    canActivate: [AuthGuard],
+    canMatch: [AuthGuard],
+  },
+  {
+    path: 'heroes/new',
+    component: HeroNewComponent,
+    canActivate: [AuthGuard],
+    canMatch: [AuthGuard],
+  },
+  {
+    path: 'usuarios',
+    component: UsuariosComponent,
+    canActivate: [AuthGuard],
+    canMatch: [AuthGuard],
+  },
+  {
+    path: 'usuarios/detail/:id',
+    component: UsuarioDetailComponent,
+    canActivate: [AuthGuard],
+    canMatch: [AuthGuard],
+  },
+  {
+    path: 'usuarios/new',
+    component: UsuarioNewComponent,
+    canActivate: [AuthGuard],
+    canMatch: [AuthGuard],
+  },
+  {
+    path: 'roles',
+    component: RolesComponent,
+    canActivate: [AuthGuard],
+    canMatch: [AuthGuard],
+  },
+  {
+    path: 'roles/new',
+    component: RoleNewComponent,
+    canActivate: [AuthGuard],
+    canMatch: [AuthGuard],
+  },
+  {
+    path: 'localidades',
+    component: LocalidadesComponent,
+    canActivate: [AuthGuard],
+    canMatch: [AuthGuard],
+  },
+  {
+    path: 'localidades/detail/:id',
+    component: LocalidadDetailComponent,
+    canActivate: [AuthGuard],
+    canMatch: [AuthGuard],
+  },
+  {
+    path: 'clientes',
+    component: ClientesComponent,
+    canActivate: [AuthGuard],
+    canMatch: [AuthGuard],
+  },
+  {
+    path: 'clientes/detail/:id',
+    component: ClienteDetailComponent,
+    canActivate: [AuthGuard],
+    canMatch: [AuthGuard],
+  },
+  {
+    path: 'contactos',
+    component: ContactosComponent,
+    canActivate: [AuthGuard],
+    canMatch: [AuthGuard],
+  },
+  {
+    path: 'contactos/detail/:id',
+    component: ContactoDetailComponent,
+    canActivate: [AuthGuard],
+    canMatch: [AuthGuard],
+  },
+  {
+    path: 'comercios',
+    component: ComerciosComponent,
+    canActivate: [AuthGuard],
+    canMatch: [AuthGuard],
+  },
+  {
+    path: 'comercios/detail/:id',
+    component: ComercioDetailComponent,
+    canActivate: [AuthGuard],
+    canMatch: [AuthGuard],
+  },
+  {
+    path: 'comercios/new',
+    component: ComercioNewComponent,
+    canActivate: [AuthGuard],
+    canMatch: [AuthGuard],
+  },
+];
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AdminRoutingModule { }
+export class AdminRoutingModule {}
