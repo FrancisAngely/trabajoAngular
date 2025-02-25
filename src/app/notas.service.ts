@@ -1,6 +1,8 @@
 import { Inject, Injectable } from '@angular/core';
 import { Usuario } from './usuario';
 import { Observable, of } from 'rxjs';
+import { Notas } from './notas';
+
 import { MessageService } from './message.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
@@ -92,5 +94,29 @@ getUserLogged() {
 }
 
 export class NotaService {
+
+  notasUrl: any;
+  http: HttpClient;
+
+  deleteNota(id: number): Observable<any> {
+    const url = `${this.notasUrl}/${id}`;
+    return this.http.delete(url, this.httpOptions);
+  }
+  httpOptions(url: string, httpOptions: any): Observable<any> {
+    throw new Error('Method not implemented.');
+  }
   constructor() { }
+
+
+getNotas(): Observable<Notas[]> {
+  return this.http.get<Notas[]>(this.notasUrl)
+    .pipe(
+      catchError(this.handleError<Notas[]>('getNotas', []))
+    );
+}
+  handleError<T>(arg0: string, arg1: never[]): (err: any, caught: Observable<Notas[]>) => import("rxjs").ObservableInput<any> {
+    throw new Error('Method not implemented.');
+  }
+
+
 }

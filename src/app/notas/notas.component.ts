@@ -1,6 +1,6 @@
 import { Component, AfterViewInit, OnInit, TemplateRef, ViewChild, Renderer2 } from '@angular/core';
-import { Nota } from '../nota';
-import { NotaService } from '../nota.service';
+import { Notas } from '../notas';
+import { NotaService } from '../notas.service';
 import { MessageService } from '../message.service';
 import { DataTablesModule } from "angular-datatables";
 import { DataTablesResponse } from '../datatables-response';
@@ -18,7 +18,7 @@ import { faTrash, faPenToSquare, faCirclePlus } from '@fortawesome/free-solid-sv
   styleUrl: './notas.component.css',
 })
 export class NotasComponent implements OnInit, AfterViewInit {
-  notas: Nota[] = [];
+  notas: Notas[] = [];
   faTrash = faTrash;
   faCirclePlus = faCirclePlus;
   faPenToSquare = faPenToSquare;
@@ -41,7 +41,7 @@ export class NotasComponent implements OnInit, AfterViewInit {
 
   constructor(
     private renderer: Renderer2, private router: Router,
-    private http: HttpClient, private notaService: NotaService,
+    private http: HttpClient, @Inject('NotaService') private notaService: NotaService,
     private messageService: MessageService
   ) { }
 
