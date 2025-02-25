@@ -58,7 +58,7 @@ export class NotasComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.notaService.getNotas()
-      .subscribe((notas: Nota[]) => this.notas = notas);
+      .subscribe((notas: Notas[]) => this.notas = notas);
 
     this.dtOptions = {
       pagingType: 'full_numbers',

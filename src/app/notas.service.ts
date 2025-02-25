@@ -96,11 +96,15 @@ getUserLogged() {
 export class NotaService {
 
   notasUrl: any;
-  http: HttpClient;
+  http: HttpClient | undefined;
 
   deleteNota(id: number): Observable<any> {
     const url = `${this.notasUrl}/${id}`;
-    return this.http.delete(url, this.httpOptions);
+    if (this.http) {
+      return this.http.delete(url, this.httpOptions);
+    } else {
+      throw new Error('HttpClient is not defined');
+    }
   }
   httpOptions(url: string, httpOptions: any): Observable<any> {
     throw new Error('Method not implemented.');
@@ -117,6 +121,7 @@ getNotas(): Observable<Notas[]> {
   handleError<T>(arg0: string, arg1: never[]): (err: any, caught: Observable<Notas[]>) => import("rxjs").ObservableInput<any> {
     throw new Error('Method not implemented.');
   }
+  
 
 
 }
