@@ -33,13 +33,6 @@
 </mat-form-field>
 
 <br>
-<mat-form-field>
-<input matInput  placeholder="id_comercios"  class="form-control" formControlName="id_comercios">
-<!-- Mensajes de error -->
-<mat-error *ngIf="id_comercios && id_comercios?.hasError('required')">El id_comercios es obligatorio</mat-error>
-</mat-form-field>
-
-<br>
         <input type="submit" value="Submit" ><!--[disabled]="form.invalid"--->
      </form>
 

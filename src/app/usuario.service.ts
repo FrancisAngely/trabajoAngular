@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { Usuario } from './usuario';
 import { Observable, of } from 'rxjs';
 import { MessageService } from './message.service';
@@ -14,7 +14,7 @@ private usuariosUrl = 'http://localhost:8080/usuarios';  // URL to web api
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
-  constructor( private http: HttpClient,private messageService: MessageService,private cookies: CookieService) { }
+  constructor( private http: HttpClient,private messageService: MessageService,@Inject(CookieService) private cookies: CookieService) { }
 
  
   getUsuarios(): Observable<Usuario[]> {
@@ -83,5 +83,6 @@ getToken() {
 }
 getUserLogged() {
   const token = this.getToken();
+  // Aquí iría el endpoint para devolver el usuario para un token
 }
 }

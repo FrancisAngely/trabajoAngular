@@ -9,11 +9,14 @@ import { UsuarioService } from '../usuario.service';
 import { Role } from '../role';
 import { RoleService } from '../role.service';
 
-import { Comercio } from '../comercio';
-import { Comercioservice } from '../comercio.service';
+
 
 
 import { Select2 } from 'ng-select2-component';
+
+
+
+
 @Component({
   selector: 'app-usuario-detail',
   standalone: false,
@@ -26,7 +29,7 @@ export class UsuarioDetailComponent {
   dataComercios: any;
   //@Input() usuario?: Usuario;
   
-  usuario: Usuario | undefined;
+  usuario: Usuario | any;
   roles: Role[] = [];
 
   constructor(
@@ -34,7 +37,7 @@ export class UsuarioDetailComponent {
     private usuarioService: UsuarioService,
     private location: Location,
     private roleService: RoleService,
-    private comercioservice: Comercioservice
+    
   ) {}
 
   ngOnInit(): void {
@@ -45,12 +48,7 @@ export class UsuarioDetailComponent {
       }));
     })
     
-    this.comercioservice.getComercios().subscribe((comercios) => {
-      this.dataComercios = comercios.map((comercio: any) => ({
-        value: comercio.id,
-        label: comercio.comercio
-      }));
-    })
+   
 
     this.getUsuario();
     this.roleService.getRoles()

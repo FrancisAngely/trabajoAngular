@@ -29,7 +29,6 @@ constructor(
   ,nombre: ['', Validators.required]
   ,apellido: ['']
   ,id_roles: ['', Validators.required]
-  ,id_comercios: ['', Validators.required]
   
 });}
 
@@ -54,10 +53,6 @@ goBack(): void {
       else{
         alert("FILL ALL FIELDS")
       }
-    }
-
-    get id_comercios() {
-      return this.form.get('id_comercios'); // Getter para facilitar el acceso en el HTML
     }
 
     get id_roles() {
