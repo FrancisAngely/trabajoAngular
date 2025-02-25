@@ -24,9 +24,30 @@ export class RoleService {
           
         }
 
+        getRole(id: number): Observable<Role> {
+            const url = `${this.rolesUrl}/${id}`;
+            return this.http.get<Role>(url)
+            .pipe ( map ( ( respuesta : any ) => respuesta.role ) ) ;
+        }
+
+        
+
         addRole(role: Role): Observable<Role> {
           return this.http.post<Role>(this.rolesUrl, role, this.httpOptions)
           .pipe ( map ( ( respuesta : any ) => respuesta.role ) ) ;
        
         }
+
+        updateRole(role: Role): Observable<any> {
+          const id=role.id;
+          const url = `${this.rolesUrl}/${id}`;
+          return this.http.put(url, role, this.httpOptions);
+        }
+
+        deleteRole(id: number): Observable<Role> {
+          const url = `${this.rolesUrl}/${id}`;
+        
+          return this.http.delete<Role>(url, this.httpOptions);
+        }
+
 }

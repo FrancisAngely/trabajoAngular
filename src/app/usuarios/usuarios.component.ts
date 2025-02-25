@@ -163,9 +163,15 @@ throw new Error('Method not implemented.');
           title: 'Eliminar',
           data: null,
           render: (data: any, type: any, row: any) => {
-            return `<div>
-                      <button class="btn btn-danger action-btn" style="width:40px">`+this.icono+`</button>
-                    </div>`;
+            return `<div class="d-flex">
+                    <div>
+                    <button class="btn btn-danger action-btn" style="width:40px">`+this.icono+`</button>
+                  </div>
+                  <div>&nbsp;</div>
+                  <div> 
+                    <button class="btn btn-primary actionEdit-btn" style="width:40px">`+this.iconoEdit+`</button>
+                  </div>
+                  </div>`
           },
           className: 'action-column'
         }
