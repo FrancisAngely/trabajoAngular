@@ -18,7 +18,7 @@ import { SharedModule } from './shared/shared.module';
 import { CookieService } from 'ngx-cookie-service';
 import { LoginComponent } from './login/login.component';
 //import { Select2Module } from 'ng-select2-component'; // Cambiado a Select2Module
-import { Select2,Select2Hint,Select2Label } from 'ng-select2-component';
+import { Select2, Select2Hint, Select2Label } from 'ng-select2-component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -30,9 +30,7 @@ import { RoleNewComponent } from './role-new/role-new.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { RouterModule } from '@angular/router'; // Importar RouterModule para routerLink
 import { UsuarioDetailComponent } from './usuario-detail/usuario-detail.component';
-import { Component } from '@angular/core';
-
-import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';  // Add this import
+import { NotasComponent } from './notas/notas.component'; // Importa tu componente NotasComponent
 
 @NgModule({
   declarations: [
@@ -45,37 +43,38 @@ import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';  // Add this 
     LoginComponent,
     UsuarioNewComponent,
     RoleNewComponent,
-    UsuarioDetailComponent
+    UsuarioDetailComponent,
+    NotasComponent // Declara tu componente aquí
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule,
+    FormsModule, // Asegúrate de importar FormsModule
     ReactiveFormsModule,
     NgIf,
     NgFor,
     UpperCasePipe,
-    DataTablesModule,
+    DataTablesModule, // Asegúrate de importar DataTablesModule
     NgbModule,
     NgxDatatableModule,
-    SweetAlert2Module.forRoot(),
+    SweetAlert2Module.forRoot(), // Asegúrate de importar SweetAlert2Module
     SharedModule,
     FontAwesomeModule,
     Select2,
-    Select2Hint,Select2Label,
+    Select2Hint, Select2Label,
     MatFormFieldModule,
     MatInputModule,
     MatIconModule,
     MatButtonModule,
     RouterModule, 
     FontAwesomeModule,
-    
   ],
   providers: [
     CookieService,
     provideAnimationsAsync(),
   ],
+  schemas: [NO_ERRORS_SCHEMA], // Añade NO_ERRORS_SCHEMA para permitir cualquier elemento
   bootstrap: [AppComponent]
 })
 export class AppModule { }
