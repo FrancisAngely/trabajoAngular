@@ -3,7 +3,7 @@
 <ul class="notas">
   <li *ngFor="let n of notas">
     <a routerLink="/notas/detail/{{n.id}}">
-      <span class="">{{n.title}}</span>
+      <span class="">{{n.notas}}</span>
     </a>
     <button type="button" class="delete" title="delete nota" (click)="delete(n)">x</button>
   </li>

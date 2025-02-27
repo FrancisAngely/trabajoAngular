@@ -8,14 +8,21 @@ import { UsuarioNewComponent } from './usuario-new/usuario-new.component';
 import { RoleNewComponent } from './role-new/role-new.component';
 import { UsuarioDetailComponent } from './usuario-detail/usuario-detail.component';
 import { NotasComponent } from './notas/notas.component';
-const routes: Routes = [
-  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
-  { path: 'dashboard', component: DashboardComponent },
-  { path: 'usuarios', component: UsuariosComponent },
-  { path: 'roles', component: RolesComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'usuario-new', component: UsuarioNewComponent },
-  { path: 'role-new', component: RoleNewComponent },
-  { path: 'usuario-detail/:id', component: UsuarioDetailComponent },
-  { path: 'notas', component: NotasComponent }
+import { AuthGuard } from './guards/auth.guard';
+import { NoAuthGuard } from './guards/noauth.guard';
+
+
+export const routes: Routes = [
+  {path:'admin',loadChildren:() => import('./admin/admin.module').then(m=>m.AdminModule), canActivate: [AuthGuard]},
+  {path:'',loadChildren:() => import('./auth/auth.module').then(m=>m.AuthModule), canActivate: [NoAuthGuard]},
+  {path:'auth',loadChildren:() => import('./auth/auth.module').then(m=>m.AuthModule)},
+  {path:'admin',loadChildren:() => import('./admin/admin.module').then(m=>m.AdminModule), canActivate: [AuthGuard],canMatch: [AuthGuard]}
 ];
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes, { useHash: true })],//, { useHash: true }
+  exports: [RouterModule]
+})
+export class AppRoutingModule { 
+  
+}

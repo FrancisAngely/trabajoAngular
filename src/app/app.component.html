@@ -1,22 +1,24 @@
+<app-header></app-header>  <!-- Aquí se muestra el Header -->
 
-<app-header></app-header>
-<!--<nav> 
-  <a   routerLink="/dashboard">Dashboard</a>
-   <a   routerLink="/heroes">Heroes</a>
-   <a   routerLink="/usuarios">Usuarios</a>
-   <a   routerLink="/roles">Roles</a>
-   <a   routerLink="/localidades">Localidades</a>
-   <a   routerLink="/clientes">Clientes</a>
-   <a  routerLink="/contactos">Contactos</a>
-
-</nav>-->
 <main role="main" class="container-position">
   <div class="container-fluid">
-   
+    <!-- Aquí es donde se cargarán las vistas de acuerdo con las rutas definidas -->
     <router-outlet></router-outlet>
-    <!--<app-messages></app-messages>-->
-
-    <!--<app-roles></app-roles>-->
   </div>
 </main>
-<app-footer></app-footer>
+
+<app-footer></app-footer>  
+
+<!-- Aquí se muestra el Footer -->
+
+<!-- Si decides usar enlaces de navegación en el futuro, puedes descomentar el siguiente bloque de código -->
+
+<!--
+<nav>
+  <a routerLink="/dashboard">Dashboard</a>
+  <a routerLink="/usuarios">Usuarios</a>
+  <a routerLink="/roles">Roles</a>
+  <a routerLink="/notas">Notas</a>
+ Otros enlaces según sea necesario
+</nav>
+-->

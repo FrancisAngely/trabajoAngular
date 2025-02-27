@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, OnInit, TemplateRef, ViewChild, Renderer2, Inject } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild, Renderer2 } from '@angular/core';
 import { Notas } from '../notas';
 import { NotaService } from '../notas.service';
 import { MessageService } from '../message.service';
@@ -17,10 +17,7 @@ import { faTrash, faPenToSquare, faCirclePlus } from '@fortawesome/free-solid-sv
   templateUrl: './notas.component.html',
   styleUrl: './notas.component.css',
 })
-export class NotasComponent implements OnInit, AfterViewInit {
-delete(_t4: any) {
-throw new Error('Method not implemented.');
-}
+export class NotasComponent implements OnInit {
   notas: Notas[] = [];
   faTrash = faTrash;
   faCirclePlus = faCirclePlus;
@@ -41,10 +38,11 @@ throw new Error('Method not implemented.');
     viewBox="0 0 `+this.faPenToSquare.icon[0]+` `+this.faPenToSquare.icon[1]+`">
     <path fill="currentColor" d="`+this.faPenToSquare.icon[4]+`"></path></svg></fa-icon>
   `;
+delete: any;
 
   constructor(
     private renderer: Renderer2, private router: Router,
-    private http: HttpClient, @Inject('NotaService') private notaService: NotaService,
+    private http: HttpClient, private notaService: NotaService,
     private messageService: MessageService
   ) { }
 
@@ -103,16 +101,8 @@ throw new Error('Method not implemented.');
           data: "id",
         },
         {
-          title: "ID alumnos",
-          data: "id_alumnos",
-        },
-        {
-          title: "ID Modulos",
-          data: "id_modulos",
-        },
-        {
-          title: "Notas",
-          data: "nota",
+          title: "Nota Title",
+          data: "title",
         },
         {
           title: 'Eliminar',
@@ -178,5 +168,6 @@ throw new Error('Method not implemented.');
   onClickSubmit(notaData: any) {
     // Implement the logic to handle form submission
     console.log('Form data:', notaData);
+    // Add your logic to handle the form submission, e.g., call a service to save the nota
   }
 }
