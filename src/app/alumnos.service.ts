@@ -8,7 +8,7 @@ import { Alumnos } from './alumnos';
   providedIn: 'root'
 })
 export class AlumnoService {
-  private alumnosUrl = 'http://localhost:8080/alumnos';  // URL to alumnos api
+  private alumnosUrl = 'http://localhost:8080/alumnos/datatable';  // URL to alumnos api
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };

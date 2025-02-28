@@ -1,31 +1,29 @@
 <h2>Alumnos</h2>
+
+<!-- Lista de alumnos -->
 <ul class="alumnos">
   <li *ngFor="let alumno of alumnos">
-    <a routerLink="/alumnos/detail/{{alumno.id}}">
-      <span>{{alumno.nombre}} {{alumno.apellidos}}</span>
+    <a [routerLink]="'/alumnos/' + alumno.id">
+      <span>{{ alumno.nombre }} {{ alumno.apellidos }}</span>
     </a>
-    <button type="button" class="delete" title="Eliminar alumno" (click)="delete(alumno)">x</button>
+    <button type="button" class="delete" title="Eliminar alumno" (click)="eliminar(alumno.id)">x</button>
   </li>
 </ul>
 
-<ng-template #demoNg let-data="adtData" let-emitter="captureEvents">
-</ng-template>
+<!-- SweetAlert2 de confirmación -->
+<swal #confirmDialog title="Are you sure?" text="This cannot be undone" icon="question" [showDenyButton]="true" [focusCancel]="true"></swal>
 
-<swal #confirmDialog title="Are you sure?" text="This cannot be undone" icon="question" [showDenyButton]="true"
-  [focusCancel]="true">
+<!-- SweetAlert2 de éxito -->
+<swal #swal1 title="Eliminado correctamente" text="Eliminado de la base de datos" icon="success"></swal>
 
-</swal>
-
-<swal #swal1 title="Eliminado correctamente" text="Eliminado de la base de datos" icon="success">
-
-</swal>
-
+<!-- Tabla con DataTables -->
 <table datatable [dtOptions]="dtOptions" class="row-border hover"></table>
 
+<!-- Formulario para agregar un nuevo alumno -->
 <form #alumnonew="ngForm" (ngSubmit)="onClickSubmit(alumnonew.value)">
   <input type="text" name="nombre" placeholder="Nombre" ngModel />
-  <br>
+  <br />
   <input type="text" name="apellidos" placeholder="Apellidos" ngModel />
-  <br>
-  <input type="submit" value="Agregar Alumno">
+  <br />
+  <input type="submit" value="Agregar Alumno" />
 </form>
