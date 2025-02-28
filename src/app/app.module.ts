@@ -29,6 +29,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { RouterModule } from '@angular/router';
 import { UsuarioDetailComponent } from './usuario-detail/usuario-detail.component';
 import { NotasComponent } from './notas/notas.component';
+import { AlumnosComponent } from './alumnos/alumnos.component';
+
 
 @NgModule({
   declarations: [
@@ -42,7 +44,8 @@ import { NotasComponent } from './notas/notas.component';
     UsuarioNewComponent,
     RoleNewComponent,
     UsuarioDetailComponent,
-    NotasComponent
+    NotasComponent, 
+    AlumnosComponent,
   ],
   imports: [
     BrowserModule,

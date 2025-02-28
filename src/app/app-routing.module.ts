@@ -11,18 +11,25 @@ import { NotasComponent } from './notas/notas.component';
 import { AuthGuard } from './guards/auth.guard';
 import { NoAuthGuard } from './guards/noauth.guard';
 
+// Rutas de alumnos
+import { AlumnosComponent } from './alumnos/alumnos.component';
+// import { AlumnosDetailComponent } from './alumnos/alumnos-detail.component';
+// import { AlumnosNewComponent } from './alumnos/alumnos-new.component';
 
 export const routes: Routes = [
-  {path:'admin',loadChildren:() => import('./admin/admin.module').then(m=>m.AdminModule), canActivate: [AuthGuard]},
-  {path:'',loadChildren:() => import('./auth/auth.module').then(m=>m.AuthModule), canActivate: [NoAuthGuard]},
-  {path:'auth',loadChildren:() => import('./auth/auth.module').then(m=>m.AuthModule)},
-  {path:'admin',loadChildren:() => import('./admin/admin.module').then(m=>m.AdminModule), canActivate: [AuthGuard],canMatch: [AuthGuard]}
+  { path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule), canActivate: [AuthGuard] },
+  { path: '', loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule), canActivate: [NoAuthGuard] },
+  { path: 'auth', loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule) },
+  { path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule), canActivate: [AuthGuard], canMatch: [AuthGuard] },
+
+  // Rutas de alumnos
+  { path: 'alumnos', component: AlumnosComponent, canActivate: [AuthGuard] }, // Lista de alumnos
+  // { path: 'alumnos/detail/:id', component: AlumnosDetailComponent, canActivate: [AuthGuard] }, // Detalle de un alumno
+  // { path: 'alumnos/new', component: AlumnosNewComponent, canActivate: [AuthGuard] }, // Formulario para agregar un nuevo alumno
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { useHash: true })],//, { useHash: true }
+  imports: [RouterModule.forRoot(routes, { useHash: true })], // , { useHash: true }
   exports: [RouterModule]
 })
-export class AppRoutingModule { 
-  
-}
+export class AppRoutingModule { }
