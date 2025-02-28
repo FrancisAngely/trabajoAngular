@@ -100,9 +100,20 @@ delete: any;
           title: "ID",
           data: "id",
         },
+                
         {
-          title: "Nota Title",
-          data: "title",
+          title: "ID Alumnos",
+          data: "id_alumnos",
+        },
+                
+        {
+          title: "ID Modulos",
+          data: "id_modulos",
+        },
+        
+        {
+          title: "Nota ",
+          data: "nota",
         },
         {
           title: 'Eliminar',

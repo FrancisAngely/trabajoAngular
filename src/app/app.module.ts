@@ -15,7 +15,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgTemplateRefComponent } from './ng-template-ref/ng-template-ref.component';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
-import { SharedModule } from './shared/shared.module';  // Aquí está importado SharedModule correctamente
+import { SharedModule } from './shared/shared.module';
 import { CookieService } from 'ngx-cookie-service';
 import { LoginComponent } from './login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -47,7 +47,7 @@ import { NotasComponent } from './notas/notas.component';
   imports: [
     BrowserModule,
     CommonModule,
-    AppRoutingModule,  // Aquí sigue estando el AppRoutingModule
+    AppRoutingModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
@@ -55,7 +55,7 @@ import { NotasComponent } from './notas/notas.component';
     NgbModule,
     NgxDatatableModule,
     SweetAlert2Module.forRoot(),
-    SharedModule,  // Importando SharedModule correctamente
+    SharedModule,
     FontAwesomeModule,
     MatFormFieldModule,
     MatInputModule,
