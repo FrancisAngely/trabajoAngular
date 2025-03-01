@@ -8,29 +8,32 @@ import { UsuarioNewComponent } from './usuario-new/usuario-new.component';
 import { RoleNewComponent } from './role-new/role-new.component';
 import { UsuarioDetailComponent } from './usuario-detail/usuario-detail.component';
 import { NotasComponent } from './notas/notas.component';
-import { AlumnosComponent } from './alumnos/alumnos.component'; // Asegúrate de que AlumnosComponent esté correctamente importado
-// import { AlumnosDetailComponent } from './alumnos/alumnos-detail.component'; // Asegúrate de que el componente de detalle esté importado
-// import { AlumnosNewComponent } from './alumnos/alumnos-new.component'; // Asegúrate de que el componente de nuevo alumno esté importado
+import { AlumnosComponent } from './alumnos/alumnos.component';
+import { ModulosComponent } from './modulos/modulos.component';
 
 import { AuthGuard } from './guards/auth.guard';
 import { NoAuthGuard } from './guards/noauth.guard';
 
 export const routes: Routes = [
-  { path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule), canActivate: [AuthGuard] },
-  { path: '', loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule), canActivate: [NoAuthGuard] },
-  { path: 'auth', loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule) },
-  
-  // Eliminamos la ruta duplicada 'admin'
-  // { path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule), canActivate: [AuthGuard], canMatch: [AuthGuard] },
-
-  // Rutas de alumnos
-  { path: 'alumnos', component: AlumnosComponent, canActivate: [AuthGuard] }, // Lista de alumnos
-  // { path: 'alumnos/detail/:id', component: AlumnosDetailComponent, canActivate: [AuthGuard] }, // Detalle de un alumno
-  // { path: 'alumnos/new', component: AlumnosNewComponent, canActivate: [AuthGuard] }, // Formulario para agregar un nuevo alumno
+  {
+    path: 'admin',
+    loadChildren: () =>
+      import('./admin/admin.module').then((m) => m.AdminModule),
+    canActivate: [AuthGuard],
+  },
+  {
+    path: '',
+    loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
+    canActivate: [NoAuthGuard],
+  },
+  {
+    path: 'auth',
+    loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, { useHash: true })], // Si no necesitas el hash en las rutas, puedes eliminar `{ useHash: true }`
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

@@ -11,13 +11,14 @@
 </ul>
 
 <!-- SweetAlert2 de confirmación -->
-<swal #confirmDialog title="Are you sure?" text="This cannot be undone" icon="question" [showDenyButton]="true" [focusCancel]="true"></swal>
+<swal #confirmDialog title="Are you sure?" text="This cannot be undone" icon="question" [showDenyButton]="true"
+  [focusCancel]="true"></swal>
 
 <!-- SweetAlert2 de éxito -->
 <swal #swal1 title="Eliminado correctamente" text="Eliminado de la base de datos" icon="success"></swal>
 
 <!-- Tabla con DataTables -->
-<table datatable [dtOptions]="dtOptions" class="row-border hover"></table>
+<table datatable [dtOptions]="dtOptions" class="row-border hover"></table>k
 
 <!-- Formulario para agregar un nuevo alumno -->
 <form #alumnonew="ngForm" (ngSubmit)="onClickSubmit(alumnonew.value)">

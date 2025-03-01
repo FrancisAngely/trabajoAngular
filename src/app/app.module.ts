@@ -30,7 +30,13 @@ import { RouterModule } from '@angular/router';
 import { UsuarioDetailComponent } from './usuario-detail/usuario-detail.component';
 import { NotasComponent } from './notas/notas.component';
 import { AlumnosComponent } from './alumnos/alumnos.component';
-
+import { ModulosComponent } from './modulos/modulos.component';
+import { ModulosDetailComponent } from './modulos-detail/modulos-detail.component';
+import { ModulosNewComponent } from './modulos-new/modulos-new.component';
+import { AlumnosDetailComponent } from './alumnos-detail/alumnos-detail.component';
+import { AlumnosNewComponent } from './alumnos-new/alumnos-new.component';
+import { NotaNewComponent } from './notas-new/notas-new.component';
+import { NotasDetailComponent } from './notas-detail/notas-detail.component';
 
 @NgModule({
   declarations: [
@@ -44,8 +50,15 @@ import { AlumnosComponent } from './alumnos/alumnos.component';
     UsuarioNewComponent,
     RoleNewComponent,
     UsuarioDetailComponent,
-    NotasComponent, 
+    NotasComponent,
     AlumnosComponent,
+    ModulosComponent,
+    ModulosDetailComponent,
+    ModulosNewComponent,
+    AlumnosDetailComponent,
+    AlumnosNewComponent,
+    NotasDetailComponent,
+    NotaNewComponent,
   ],
   imports: [
     BrowserModule,
@@ -65,11 +78,9 @@ import { AlumnosComponent } from './alumnos/alumnos.component';
     MatIconModule,
     MatButtonModule,
     RouterModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
   ],
-  providers: [
-    CookieService
-  ],
-  bootstrap: [AppComponent]
+  providers: [CookieService],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

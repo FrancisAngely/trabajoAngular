@@ -1,1 +1,16 @@
-<p>modulos works!</p>
+<h2>Modulos</h2>
+
+<ng-template #demoNg let-data="adtData" let-emitter="captureEvents">
+</ng-template>
+
+<swal #confirmDialog title="Are you sure?" text="This cannot be undone" icon="question" [showDenyButton]="true"
+    [focusCancel]="true"></swal>
+<swal #swal1 title="Eliminado correctamente" text="Eliminado de la base de datos" icon="success"></swal>
+
+<table datatable [dtOptions]="dtOptions" class="row-border hover"></table>
+
+<form #rolenew="ngForm" (ngSubmit)="onClickSubmit(rolenew.value)">
+    <input type="text" name="role" placeholder="modulo Name" ngModel />
+    <br>
+    <input type="submit" value="submit">
+</form>

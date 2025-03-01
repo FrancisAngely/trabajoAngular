@@ -1,5 +1,5 @@
 <h2>Usuarios</h2>
-
+<a class="btn btn-primary" routerLink="new"><fa-icon [icon]="faCirclePlus"></fa-icon>&nbsp;Añadir</a>
 <ul class="usuarios">
   <li *ngFor="let c of usuarios">
     <a routerLink="/usuarios/detail/{{c.id}}">
