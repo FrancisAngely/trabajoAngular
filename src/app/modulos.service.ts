@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Modulo } from './modulos';
 
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { map } from 'rxjs/operators';
+import { catchError, map, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ModuloService {
-  private modulosUrl = 'http://localhost:8080/modulos'; // URL de la API
+  private modulosUrl = 'http://localhost:8080/modulo'; // URL de la API
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
   };
@@ -44,5 +44,11 @@ export class ModuloService {
   deleteModulo(id: number): Observable<Modulo> {
     const url = `${this.modulosUrl}/${id}`;
     return this.http.delete<Modulo>(url, this.httpOptions);
+  }
+  private handleError<T>(operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
+      console.error(error); // log to console instead
+      return of(result as T);
+    };
   }
 }

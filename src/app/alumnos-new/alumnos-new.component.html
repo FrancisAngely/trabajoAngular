@@ -1,1 +1,19 @@
-<p>alumnos-new works!</p>
+<form id="alumnoForm" (ngSubmit)="submit()" [formGroup]="form">
+    <mat-form-field>
+        <mat-label>Nombre del Alumno</mat-label>
+        <input matInput placeholder="Nombre" formControlName="nombre" name="nombre">
+        <mat-error *ngIf="nombre?.hasError('required')">El nombre es obligatorio</mat-error>
+    </mat-form-field>
+
+    <br>
+    <mat-form-field>
+        <mat-label>Apellido del Alumno</mat-label>
+        <input matInput placeholder="Apellido" formControlName="apellidos" name="apellidos">
+        <mat-error *ngIf="apellidos?.hasError('required')">El apellido es obligatorio</mat-error>
+    </mat-form-field>
+
+    <br>
+    <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">Enviar</button>
+</form>
+
+<button mat-button (click)="goBack()">Volver</button>

@@ -1,15 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { UsuariosComponent } from './usuarios/usuarios.component';
-import { RolesComponent } from './roles/roles.component';
-import { LoginComponent } from './login/login.component';
-import { UsuarioNewComponent } from './usuario-new/usuario-new.component';
-import { RoleNewComponent } from './role-new/role-new.component';
-import { UsuarioDetailComponent } from './usuario-detail/usuario-detail.component';
-import { NotasComponent } from './notas/notas.component';
-import { AlumnosComponent } from './alumnos/alumnos.component';
-import { ModulosComponent } from './modulos/modulos.component';
 
 import { AuthGuard } from './guards/auth.guard';
 import { NoAuthGuard } from './guards/noauth.guard';

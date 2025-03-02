@@ -19,18 +19,3 @@
 
 
 <table datatable [dtOptions]="dtOptions" class="row-border hover"></table>
-
-
-<form #usuarionew="ngForm" (ngSubmit)="onClickSubmit(usuarionew.value)">
-  <input type="text" name="email" placeholder="email" ngModel />
-  <br>
-  <input type="text" name="password" placeholder="password" ngModel />
-  <br>
-  <input type="text" name="nombre" placeholder="nombre" ngModel />
-  <br>
-  <input type="text" name="apellido" placeholder="apellido" ngModel />
-  <br>
-  <input type="text" name="id_roles" placeholder="id_roles" ngModel />
-  <br>
-  <input type="submit" value="submit">
-</form>

@@ -1,15 +1,26 @@
-import { Component, AfterViewInit, OnInit, TemplateRef, ViewChild, Renderer2 } from '@angular/core';
+import {
+  Component,
+  AfterViewInit,
+  OnInit,
+  TemplateRef,
+  ViewChild,
+  Renderer2,
+} from '@angular/core';
 import { Role } from '../role';
 import { RoleService } from '../role.service';
 import { MessageService } from '../message.service';
-import { DataTablesModule } from "angular-datatables";
+import { DataTablesModule } from 'angular-datatables';
 import { DataTablesResponse } from '../datatables-response';
 import { DataTableDirective } from 'angular-datatables';
-import { Config } from "datatables.net";
+import { Config } from 'datatables.net';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { SweetAlert2Module, SwalComponent } from '@sweetalert2/ngx-sweetalert2';
 import { Router } from '@angular/router';
-import { faTrash, faPenToSquare, faCirclePlus } from '@fortawesome/free-solid-svg-icons';
+import {
+  faTrash,
+  faPenToSquare,
+  faCirclePlus,
+} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-roles',
@@ -22,32 +33,60 @@ export class RolesComponent implements OnInit, AfterViewInit {
   faTrash = faTrash;
   faCirclePlus = faCirclePlus;
   faPenToSquare = faPenToSquare;
-  icono = `<fa-icon class="ng-fa-icon" size="xs">
+  icono =
+    `<fa-icon class="ng-fa-icon" size="xs">
   <svg 
-    aria-hidden="true" data-prefix="`+this.faTrash.prefix+`" data-icon="`+this.faTrash.iconName+`"
-    class="svg-inline--fa fa-`+this.faTrash.iconName+`" role="img"
+    aria-hidden="true" data-prefix="` +
+    this.faTrash.prefix +
+    `" data-icon="` +
+    this.faTrash.iconName +
+    `"
+    class="svg-inline--fa fa-` +
+    this.faTrash.iconName +
+    `" role="img"
     xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 `+this.faTrash.icon[0]+` `+this.faTrash.icon[1]+`">
-    <path fill="currentColor" d="`+this.faTrash.icon[4]+`"></path></svg></fa-icon>
+    viewBox="0 0 ` +
+    this.faTrash.icon[0] +
+    ` ` +
+    this.faTrash.icon[1] +
+    `">
+    <path fill="currentColor" d="` +
+    this.faTrash.icon[4] +
+    `"></path></svg></fa-icon>
   `;
-  iconoEdit = `<fa-icon class="ng-fa-icon" size="xs">
+  iconoEdit =
+    `<fa-icon class="ng-fa-icon" size="xs">
   <svg 
-    aria-hidden="true" data-prefix="`+this.faPenToSquare.prefix+`" data-icon="`+this.faPenToSquare.iconName+`"
-    class="svg-inline--fa fa-`+this.faPenToSquare.iconName+`" role="img"
+    aria-hidden="true" data-prefix="` +
+    this.faPenToSquare.prefix +
+    `" data-icon="` +
+    this.faPenToSquare.iconName +
+    `"
+    class="svg-inline--fa fa-` +
+    this.faPenToSquare.iconName +
+    `" role="img"
     xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 `+this.faPenToSquare.icon[0]+` `+this.faPenToSquare.icon[1]+`">
-    <path fill="currentColor" d="`+this.faPenToSquare.icon[4]+`"></path></svg></fa-icon>
+    viewBox="0 0 ` +
+    this.faPenToSquare.icon[0] +
+    ` ` +
+    this.faPenToSquare.icon[1] +
+    `">
+    <path fill="currentColor" d="` +
+    this.faPenToSquare.icon[4] +
+    `"></path></svg></fa-icon>
   `;
 
   constructor(
-    private renderer: Renderer2, private router: Router,
-    private http: HttpClient, private roleService: RoleService,
+    private renderer: Renderer2,
+    private router: Router,
+    private http: HttpClient,
+    private roleService: RoleService,
     private messageService: MessageService
-  ) { }
+  ) {}
 
   message = '';
   httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
   };
 
   dtOptions: Config = {};
@@ -57,8 +96,7 @@ export class RolesComponent implements OnInit, AfterViewInit {
   @ViewChild('myTable') myTable: DataTablesResponse | any;
 
   ngOnInit(): void {
-    this.roleService.getRoles()
-      .subscribe(roles => this.roles = roles);
+    this.roleService.getRoles().subscribe((roles) => (this.roles = roles));
 
     this.dtOptions = {
       pagingType: 'full_numbers',
@@ -66,59 +104,71 @@ export class RolesComponent implements OnInit, AfterViewInit {
       order: [0, 'desc'],
       processing: true,
       language: {
-        "decimal": "",
-        "emptyTable": "No hay información",
-        "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
-        "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
-        "infoFiltered": "(Filtrado de _MAX_ total entradas)",
-        "infoPostFix": "",
-        "thousands": ",",
-        "lengthMenu": "Mostrar _MENU_ Entradas",
-        "loadingRecords": "Cargando...",
-        "processing": "Procesando...",
-        "search": "Buscar:",
-        "zeroRecords": "Sin resultados encontrados",
-        "paginate": {
-          "first": "Primero",
-          "last": "Ultimo",
-          "next": "Siguiente",
-          "previous": "Anterior"
-        }
+        decimal: '',
+        emptyTable: 'No hay información',
+        info: 'Mostrando _START_ a _END_ de _TOTAL_ Entradas',
+        infoEmpty: 'Mostrando 0 to 0 of 0 Entradas',
+        infoFiltered: '(Filtrado de _MAX_ total entradas)',
+        infoPostFix: '',
+        thousands: ',',
+        lengthMenu: 'Mostrar _MENU_ Entradas',
+        loadingRecords: 'Cargando...',
+        processing: 'Procesando...',
+        search: 'Buscar:',
+        zeroRecords: 'Sin resultados encontrados',
+        paginate: {
+          first: 'Primero',
+          last: 'Ultimo',
+          next: 'Siguiente',
+          previous: 'Anterior',
+        },
       },
       ajax: (dataTablesParameters: any, callback) => {
-        this.http.post<DataTablesResponse>("http://localhost:8080/roles/datatable", dataTablesParameters, {}).subscribe((resp) => {
-          callback({
-            recordsTotal: resp.recordsTotal,
-            recordsFiltered: resp.recordsFiltered,
-            data: resp.data,
+        this.http
+          .post<DataTablesResponse>(
+            'http://localhost:8080/roles/datatable',
+            dataTablesParameters,
+            {}
+          )
+          .subscribe((resp) => {
+            callback({
+              recordsTotal: resp.recordsTotal,
+              recordsFiltered: resp.recordsFiltered,
+              data: resp.data,
+            });
           });
-        });
       },
       columns: [
         {
-          title: "ID",
-          data: "id",
+          title: 'ID',
+          data: 'id',
         },
         {
-          title: "Role Name",
-          data: "role",
+          title: 'Role Name',
+          data: 'role',
         },
         {
-          title: 'Eliminar',
+          title: 'Acciones',
           data: null,
           render: (data: any, type: any, row: any) => {
-            return `<div class="d-flex">
+            return (
+              `<div class="d-flex">
                     <div>
-                    <button class="btn btn-danger action-btn" style="width:40px">`+this.icono+`</button>
+                    <button class="btn btn-danger action-btn" style="width:40px">` +
+              this.icono +
+              `</button>
                   </div>
                   <div>&nbsp;</div>
                   <div> 
-                    <button class="btn btn-primary actionEdit-btn" style="width:40px">`+this.iconoEdit+`</button>
+                    <button class="btn btn-primary actionEdit-btn" style="width:40px">` +
+              this.iconoEdit +
+              `</button>
                   </div>
                   </div>`
+            );
           },
-          className: 'action-column'
-        }
+          className: 'action-column',
+        },
       ],
       rowCallback: (row: Node, data: any, index: number) => {
         const rowElement = row as HTMLElement;
@@ -145,11 +195,11 @@ export class RolesComponent implements OnInit, AfterViewInit {
           });
         }
         return row;
-      }
+      },
     };
   }
 
-  ngAfterViewInit() { }
+  ngAfterViewInit() {}
 
   async eliminar(rowElement: HTMLElement, dataId: number) {
     const resp = await this.confirmDialog.fire();

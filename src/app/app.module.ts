@@ -32,9 +32,9 @@ import { NotasComponent } from './notas/notas.component';
 import { AlumnosComponent } from './alumnos/alumnos.component';
 import { ModulosComponent } from './modulos/modulos.component';
 import { ModulosDetailComponent } from './modulos-detail/modulos-detail.component';
-import { ModulosNewComponent } from './modulos-new/modulos-new.component';
+import { ModuloNewComponent } from './modulos-new/modulos-new.component';
 import { AlumnosDetailComponent } from './alumnos-detail/alumnos-detail.component';
-import { AlumnosNewComponent } from './alumnos-new/alumnos-new.component';
+import { AlumnoNewComponent } from './alumnos-new/alumnos-new.component';
 import { NotaNewComponent } from './notas-new/notas-new.component';
 import { NotasDetailComponent } from './notas-detail/notas-detail.component';
 
@@ -48,17 +48,17 @@ import { NotasDetailComponent } from './notas-detail/notas-detail.component';
     NgTemplateRefComponent,
     LoginComponent,
     UsuarioNewComponent,
-    RoleNewComponent,
     UsuarioDetailComponent,
     NotasComponent,
     AlumnosComponent,
     ModulosComponent,
     ModulosDetailComponent,
-    ModulosNewComponent,
+    ModuloNewComponent,
     AlumnosDetailComponent,
-    AlumnosNewComponent,
+    AlumnoNewComponent,
     NotasDetailComponent,
     NotaNewComponent,
+    RoleNewComponent,
   ],
   imports: [
     BrowserModule,

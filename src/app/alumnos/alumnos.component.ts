@@ -1,15 +1,25 @@
-import { Component, OnInit, TemplateRef, ViewChild, Renderer2 } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  TemplateRef,
+  ViewChild,
+  Renderer2,
+} from '@angular/core';
 import { Alumnos } from '../alumnos';
 import { AlumnoService } from '../alumnos.service';
 import { MessageService } from '../message.service';
-import { DataTablesModule } from "angular-datatables";
+import { DataTablesModule } from 'angular-datatables';
 import { DataTablesResponse } from '../datatables-response';
 import { DataTableDirective } from 'angular-datatables';
-import { Config } from "datatables.net";
+import { Config } from 'datatables.net';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { SweetAlert2Module, SwalComponent } from '@sweetalert2/ngx-sweetalert2';
 import { Router } from '@angular/router';
-import { faTrash, faPenToSquare, faCirclePlus } from '@fortawesome/free-solid-svg-icons';
+import {
+  faTrash,
+  faPenToSquare,
+  faCirclePlus,
+} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-alumnos',
@@ -22,18 +32,61 @@ export class AlumnosComponent implements OnInit {
   faTrash = faTrash;
   faCirclePlus = faCirclePlus;
   faPenToSquare = faPenToSquare;
-
-delete: any;
+  icono =
+    `<fa-icon class="ng-fa-icon" size="xs">
+  <svg 
+    aria-hidden="true" data-prefix="` +
+    this.faTrash.prefix +
+    `" data-icon="` +
+    this.faTrash.iconName +
+    `"
+    class="svg-inline--fa fa-` +
+    this.faTrash.iconName +
+    `" role="img"
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 ` +
+    this.faTrash.icon[0] +
+    ` ` +
+    this.faTrash.icon[1] +
+    `">
+    <path fill="currentColor" d="` +
+    this.faTrash.icon[4] +
+    `"></path></svg></fa-icon>
+  `;
+  iconoEdit =
+    `<fa-icon class="ng-fa-icon" size="xs">
+  <svg 
+    aria-hidden="true" data-prefix="` +
+    this.faPenToSquare.prefix +
+    `" data-icon="` +
+    this.faPenToSquare.iconName +
+    `"
+    class="svg-inline--fa fa-` +
+    this.faPenToSquare.iconName +
+    `" role="img"
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 ` +
+    this.faPenToSquare.icon[0] +
+    ` ` +
+    this.faPenToSquare.icon[1] +
+    `">
+    <path fill="currentColor" d="` +
+    this.faPenToSquare.icon[4] +
+    `"></path></svg></fa-icon>
+  `;
+  delete: any;
 
   constructor(
-    private renderer: Renderer2, private router: Router,
-    private http: HttpClient, private alumnoService: AlumnoService,
+    private renderer: Renderer2,
+    private router: Router,
+    private http: HttpClient,
+    private alumnoService: AlumnoService,
     private messageService: MessageService
-  ) { }
+  ) {}
 
   message = '';
   httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
   };
 
   dtOptions: Config = {};
@@ -43,8 +96,9 @@ delete: any;
   @ViewChild('myTable') myTable: DataTablesResponse | any;
 
   ngOnInit(): void {
-    this.alumnoService.getAlumnos()
-      .subscribe((alumnos: Alumnos[]) => this.alumnos = alumnos);
+    this.alumnoService
+      .getAlumnos()
+      .subscribe((alumnos: Alumnos[]) => (this.alumnos = alumnos));
 
     this.dtOptions = {
       pagingType: 'full_numbers',
@@ -52,64 +106,113 @@ delete: any;
       order: [0, 'desc'],
       processing: true,
       language: {
-        "decimal": "",
-        "emptyTable": "No hay información",
-        "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
-        "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
-        "infoFiltered": "(Filtrado de _MAX_ total entradas)",
-        "lengthMenu": "Mostrar _MENU_ Entradas",
-        "loadingRecords": "Cargando...",
-        "processing": "Procesando...",
-        "search": "Buscar:",
-        "zeroRecords": "Sin resultados encontrados",
-        "paginate": {
-          "first": "Primero",
-          "last": "Último",
-          "next": "Siguiente",
-          "previous": "Anterior"
-        }
+        decimal: '',
+        emptyTable: 'No hay información',
+        info: 'Mostrando _START_ a _END_ de _TOTAL_ Entradas',
+        infoEmpty: 'Mostrando 0 to 0 of 0 Entradas',
+        infoFiltered: '(Filtrado de _MAX_ total entradas)',
+        lengthMenu: 'Mostrar _MENU_ Entradas',
+        loadingRecords: 'Cargando...',
+        processing: 'Procesando...',
+        search: 'Buscar:',
+        zeroRecords: 'Sin resultados encontrados',
+        paginate: {
+          first: 'Primero',
+          last: 'Último',
+          next: 'Siguiente',
+          previous: 'Anterior',
+        },
       },
       ajax: (dataTablesParameters: any, callback) => {
-        this.http.post<DataTablesResponse>("http://localhost:8080/alumnos/datatable", dataTablesParameters, {}).subscribe((resp) => {
-          callback({
-            recordsTotal: resp.recordsTotal,
-            recordsFiltered: resp.recordsFiltered,
-            data: resp.data,
+        this.http
+          .post<DataTablesResponse>(
+            'http://localhost:8080/alumnos/datatable',
+            dataTablesParameters,
+            {}
+          )
+          .subscribe((resp) => {
+            callback({
+              recordsTotal: resp.recordsTotal,
+              recordsFiltered: resp.recordsFiltered,
+              data: resp.data,
+            });
           });
-        });
       },
       columns: [
         {
-          title: "ID",
-          data: "id",
+          title: 'ID',
+          data: 'id',
         },
         {
-          title: "Nombre",
-          data: "nombre",
+          title: 'Nombre',
+          data: 'nombre',
         },
         {
-          title: "Apellidos",
-          data: "apellidos",
+          title: 'Apellidos',
+          data: 'apellidos',
         },
         {
-          title: 'Eliminar',
+          title: 'Acciones',
           data: null,
           render: (data: any, type: any, row: any) => {
-            return `<button class="btn btn-danger" (click)="eliminar(${row.id})">Eliminar</button>`;
+            return (
+              `<div class="d-flex">
+                    <div>
+                    <button class="btn btn-danger action-btn" style="width:40px">` +
+              this.icono +
+              `</button>
+                  </div>
+                  <div>&nbsp;</div>
+                  <div> 
+                    <button class="btn btn-primary actionEdit-btn" style="width:40px">` +
+              this.iconoEdit +
+              `</button>
+                  </div>
+                  </div>`
+            );
           },
-          className: 'action-column'
+          className: 'action-column',
+        },
+      ],
+      rowCallback: (row: Node, data: any, index: number) => {
+        const rowElement = row as HTMLElement;
+        const Id = data.id | 0;
+        const actionCell = rowElement.querySelector('td:last-child');
+        if (actionCell) {
+          actionCell.setAttribute(
+            'style',
+            'display: flex; justify-content: center; '
+          );
         }
-      ]
+        const actionButton = rowElement.querySelector('.action-btn');
+        if (actionButton) {
+          this.renderer.listen(actionButton, 'click', () => {
+            this.eliminar(rowElement, Id);
+            console.log('Row data:', data);
+          });
+        }
+        const actionEditButton = rowElement.querySelector('.actionEdit-btn');
+        if (actionEditButton) {
+          this.renderer.listen(actionEditButton, 'click', () => {
+            this.editar(Id);
+            console.log('Edit row data:', data);
+          });
+        }
+        return row;
+      },
     };
   }
 
-  async eliminar(alumnoId: number) {
+  async eliminar(rowElement: HTMLElement, alumnoId: number) {
     const resp = await this.confirmDialog.fire();
     if (resp.isConfirmed) {
       this.alumnoService.deleteAlumno(alumnoId).subscribe();
       await this.respuestaDialog.fire();
-      this.alumnos = this.alumnos.filter(a => a.id !== alumnoId);
+      rowElement.remove();
     }
+  }
+  editar(alumnoId: number) {
+    this.router.navigate(['alumnos/edit', alumnoId]);
   }
 
   onClickSubmit(alumnoData: any) {

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, map, tap } from 'rxjs/operators';
 import { Notas } from './notas';
 
 @Injectable({
@@ -12,18 +12,21 @@ export class NotaService {
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
   };
-  addNotas: any;
 
   constructor(private http: HttpClient) {}
 
-  // Obtener todas las notas
   getNotas(): Observable<Notas[]> {
     return this.http
       .get<Notas[]>(this.notasUrl)
       .pipe(catchError(this.handleError<Notas[]>('getNotas', [])));
   }
 
-  // Eliminar una nota por su ID
+  addNotas(notas: Notas): Observable<Notas> {
+    return this.http
+      .post<Notas>(this.notasUrl, notas, this.httpOptions)
+      .pipe(map((respuesta: any) => respuesta.notas));
+  }
+
   deleteNota(id: number): Observable<any> {
     const url = `${this.notasUrl}/${id}`;
     return this.http

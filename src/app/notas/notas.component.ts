@@ -161,7 +161,7 @@ export class NotasComponent implements OnInit {
           data: 'nota',
         },
         {
-          title: 'Eliminar',
+          title: 'Acciones',
           data: null,
           render: (data: any, type: any, row: any) => {
             return (

@@ -150,7 +150,7 @@ export class ModulosComponent implements OnInit, AfterViewInit {
           data: 'modulo',
         },
         {
-          title: 'Eliminar',
+          title: 'Acciones',
           data: null,
           render: (data: any, type: any, row: any) => {
             return (

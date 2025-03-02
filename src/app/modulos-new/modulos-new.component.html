@@ -1,1 +1,11 @@
-<p>modulos-new works!</p>
+<form (ngSubmit)="submit()" [formGroup]="form">
+    <mat-form-field>
+        <mat-label>Nombre del Módulo</mat-label>
+        <input matInput placeholder="Nombre del Módulo" formControlName="modulo">
+        <mat-error *ngIf="moduloss?.hasError('required')">Este campo es obligatorio</mat-error>
+    </mat-form-field>
+    <br>
+    <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">Enviar</button>
+</form>
+
+<button mat-button (click)="goBack()">Volver</button>

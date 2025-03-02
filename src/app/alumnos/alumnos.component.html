@@ -1,14 +1,5 @@
 <h2>Alumnos</h2>
-
-<!-- Lista de alumnos -->
-<ul class="alumnos">
-  <li *ngFor="let alumno of alumnos">
-    <a [routerLink]="'/alumnos/' + alumno.id">
-      <span>{{ alumno.nombre }} {{ alumno.apellidos }}</span>
-    </a>
-    <button type="button" class="delete" title="Eliminar alumno" (click)="eliminar(alumno.id)">x</button>
-  </li>
-</ul>
+<a class="btn btn-primary" routerLink="new"><fa-icon [icon]="faCirclePlus"></fa-icon>&nbsp;Añadir</a>
 
 <!-- SweetAlert2 de confirmación -->
 <swal #confirmDialog title="Are you sure?" text="This cannot be undone" icon="question" [showDenyButton]="true"
@@ -18,13 +9,4 @@
 <swal #swal1 title="Eliminado correctamente" text="Eliminado de la base de datos" icon="success"></swal>
 
 <!-- Tabla con DataTables -->
-<table datatable [dtOptions]="dtOptions" class="row-border hover"></table>k
-
-<!-- Formulario para agregar un nuevo alumno -->
-<form #alumnonew="ngForm" (ngSubmit)="onClickSubmit(alumnonew.value)">
-  <input type="text" name="nombre" placeholder="Nombre" ngModel />
-  <br />
-  <input type="text" name="apellidos" placeholder="Apellidos" ngModel />
-  <br />
-  <input type="submit" value="Agregar Alumno" />
-</form>
+<table datatable [dtOptions]="dtOptions" class="row-border hover"></table>

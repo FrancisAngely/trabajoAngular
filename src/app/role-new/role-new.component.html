@@ -1,16 +1,13 @@
 <form id="roleForm" (ngSubmit)="submit()" [formGroup]="form">
-
     <mat-form-field>
         <mat-label>Role</mat-label>
-        <input matInput name="role" placeholder="role" class="form-control" formControlName="role">
+        <input matInput name="role" placeholder="Role" class="form-control" formControlName="role">
         <!-- Mensajes de error -->
-        <mat-error *ngIf="role && role?.hasError('required')">El role es obligatorio</mat-error>
+        <mat-error *ngIf="roleName && roleName?.hasError('required')">El role es obligatorio</mat-error>
     </mat-form-field>
 
-
-
     <br>
-    <input type="submit" value="Submit"><!--[disabled]="form.invalid"--->
+    <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">Enviar</button>
 </form>
 
 <button type="button" (click)="goBack()">go back</button>

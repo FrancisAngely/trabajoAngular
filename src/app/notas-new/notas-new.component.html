@@ -1,21 +1,21 @@
 <form id="notaForm" (ngSubmit)="submit()" [formGroup]="form">
     <mat-form-field>
         <mat-label>ID del Alumno</mat-label>
-        <input matInput placeholder="ID del Alumno" formControlName="id_alumnos">
+        <input matInput placeholder="ID del Alumno" formControlName="id_alumnos" name="id_alumnos">
         <mat-error *ngIf="id_alumnos?.hasError('required')">Este campo es obligatorio</mat-error>
     </mat-form-field>
 
     <br>
     <mat-form-field>
         <mat-label>ID del Módulo</mat-label>
-        <input matInput placeholder="ID del Módulo" formControlName="id_modulos">
+        <input matInput placeholder="ID del Módulo" formControlName="id_modulos" name="id_modulos">
         <mat-error *ngIf="id_modulos?.hasError('required')">Este campo es obligatorio</mat-error>
     </mat-form-field>
 
     <br>
     <mat-form-field>
         <mat-label>Nota</mat-label>
-        <input matInput placeholder="Nota" formControlName="nota" type="number">
+        <input matInput placeholder="Nota" formControlName="nota" type="number" name="nota">
         <mat-error *ngIf="notaField?.hasError('required')">La nota es obligatoria</mat-error>
         <mat-error *ngIf="notaField?.hasError('min')">La nota debe ser mayor o igual a 0</mat-error>
         <mat-error *ngIf="notaField?.hasError('max')">La nota debe ser menor o igual a 10</mat-error>

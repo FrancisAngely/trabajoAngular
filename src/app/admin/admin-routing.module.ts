@@ -10,6 +10,9 @@ import { NotasComponent } from '../notas/notas.component';
 import { AuthGuard } from '../guards/auth.guard';
 import { AlumnosComponent } from '../alumnos/alumnos.component';
 import { ModulosComponent } from '../modulos/modulos.component';
+import { NotaNewComponent } from '../notas-new/notas-new.component';
+import { AlumnoNewComponent } from '../alumnos-new/alumnos-new.component';
+import { ModuloNewComponent } from '../modulos-new/modulos-new.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
@@ -34,6 +37,13 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     canMatch: [AuthGuard],
   },
+
+  {
+    path: 'alumnos/new',
+    component: AlumnoNewComponent,
+    canActivate: [AuthGuard],
+    canMatch: [AuthGuard],
+  },
   {
     path: 'notas',
     component: NotasComponent,
@@ -43,6 +53,12 @@ const routes: Routes = [
   {
     path: 'modulos',
     component: ModulosComponent,
+    canActivate: [AuthGuard],
+    canMatch: [AuthGuard],
+  },
+  {
+    path: 'modulos/new',
+    component: ModuloNewComponent,
     canActivate: [AuthGuard],
     canMatch: [AuthGuard],
   },
@@ -73,6 +89,12 @@ const routes: Routes = [
   {
     path: 'notas',
     component: NotasComponent,
+    canActivate: [AuthGuard],
+    canMatch: [AuthGuard],
+  },
+  {
+    path: 'notas/new',
+    component: NotaNewComponent,
     canActivate: [AuthGuard],
     canMatch: [AuthGuard],
   },
